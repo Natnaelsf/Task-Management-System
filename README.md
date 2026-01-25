@@ -22,4 +22,4 @@ Prerequisites: Node.js (LTS recommended)
 
    npm run build
 
-This project does not require any external AI service keys. Any previous references to AI platforms or Gemini have been removed.
+This project does not require any external service keys by default.
