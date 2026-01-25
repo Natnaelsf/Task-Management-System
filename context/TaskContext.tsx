@@ -5,33 +5,11 @@ import { Task, TaskContextType } from '../types';
 const TaskContext = createContext<TaskContextType | undefined>(undefined);
 
 export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  // Start with an empty task list. Removed automatic fetching of sample/test tasks
+  // so the application does not include any pre-filled test data.
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-
-  const fetchTasks = useCallback(async () => {
-    setLoading(true);
-    try {
-      const response = await fetch('https://jsonplaceholder.typicode.com/todos?_limit=10');
-      if (!response.ok) throw new Error('Failed to fetch tasks');
-      const data = await response.json();
-      // Add mock descriptions since JSONPlaceholder doesn't provide them
-      const enrichedTasks = data.map((t: any) => ({
-        ...t,
-        description: `This is a detailed description for task ${t.id}. Manage your time effectively!`
-      }));
-      setTasks(enrichedTasks);
-    } catch (err: any) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchTasks();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const addTask = async (task: Omit<Task, 'id'>) => {
     try {
@@ -83,7 +61,9 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({ children
       updateTask,
       deleteTask,
       toggleTask,
-      refreshTasks: fetchTasks
+  // refreshTasks is a no-op by default; you can implement a data source
+  // and call setTasks(...) from your own code if needed.
+  refreshTasks: async () => {}
     }}>
       {children}
     </TaskContext.Provider>
