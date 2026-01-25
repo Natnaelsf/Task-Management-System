@@ -1,0 +1,5 @@
+{
+  "name": "TaskFlow Pro",
+  "description": "A sophisticated task management application with real-time state synchronization, featuring full CRUD capabilities, performance-optimized filtering, and a modern aesthetic built with React and Tailwind CSS.",
+  "requestFramePermissions": []
+}
