@@ -1,3 +1,4 @@
+
 # Logs
 logs
 *.log
@@ -7,20 +8,59 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Dependency directories
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+build/
+out/
+
+# Vite cache
+.vite/
+.vite_deps/
+
+# Optional npm cache
+.npm/
+
+# Local env files
+.env
+.env.local
+.env.*.local
 
 # Editor directories and files
-.vscode/*
+.vscode/
 !.vscode/extensions.json
-.idea
-.DS_Store
+.idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-gitignore_global
-.env
+*.iml
+
+# macOS / Windows files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# TypeScript
+*.tsbuildinfo
+
+# Test output
+coverage/
+.nyc_output/
+
+# Misc
+*.local
+*.tgz
+*.zip
+*.log
+
+# Package managers
+.pnp/
+.pnp.js
+
+# IDE specific
+.idea/
